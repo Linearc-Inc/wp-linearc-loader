@@ -53,3 +53,28 @@ function l_loader_style_callback() {
         </style>";
 }
 add_action( 'wp_head', 'l_loader_style_callback' ,1 );
+
+
+function l_loader_html_callback(){
+    echo '
+        <div class="loader">
+            <script>
+                window.addEventListener("load", function () {
+                    const loader = document.querySelector(".loader");
+                    loader.className += " hidden"; // class "loader hidden"
+                    console.log(loader);
+                });
+            </script>
+            <div class="loader-wrap">
+                <img src="'.plugin_dir_url( __FILE__ ) . 'images/default-loader.gif" alt="Loading..." />
+                <!-- <div class="text">Loading</div> -->
+            </div>
+        </div>
+    ';
+}
+
+add_action( 'wp_body_open', 'l_loader_html_callback' ,1 );
+
+//add_action( $tag:string, $function_to_add:callable, 1, $accepted_args:integer )
+
+//wp_get_plugin_file_editable_extensions( $plugin:string )
