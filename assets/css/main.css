@@ -1,0 +1,94 @@
+.wp-core-ui .l-loader.button-group {
+  padding-top: 20px;
+}
+
+.wp-core-ui .button.icon-button {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wp-core-ui .button.icon-button span.l-loader-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 3px;
+}
+
+.wp-core-ui .button-danger {
+  color: #d11616;
+  border-color: #a50c0c;
+  background: #f3f5f6;
+  -webkit-box-shadow: 0 1px 0 #a50c0c;
+          box-shadow: 0 1px 0 #a50c0c;
+  vertical-align: top;
+}
+
+.wp-core-ui .button-danger:focus, .wp-core-ui .button-danger:hover {
+  background: #e62828;
+  border-color: #610404;
+  color: #ffffff;
+}
+
+.wp-core-ui .button-danger:active {
+  background: #bd1111;
+  border-color: #8a0808;
+  -webkit-box-shadow: inset 0 2px 5px -3px rgba(165, 12, 12, 0.502);
+          box-shadow: inset 0 2px 5px -3px rgba(165, 12, 12, 0.502);
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+.wp-core-ui .button-danger[disabled], .wp-core-ui .button-danger:disabled, .wp-core-ui .button-danger.disabled {
+  color: #ffb1b1 !important;
+  border-color: #882a2a !important;
+  background: #e27575 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: default;
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+
+.wp-core-ui .button-success {
+  color: #16d164;
+  border-color: #0ca519;
+  background: #f3f5f6;
+  -webkit-box-shadow: 0 1px 0 #0ca519;
+          box-shadow: 0 1px 0 #0ca519;
+  vertical-align: top;
+}
+
+.wp-core-ui .button-success:focus, .wp-core-ui .button-success:hover {
+  background: #0ca519;
+  border-color: #16d164;
+  color: #ffffff;
+}
+
+.wp-core-ui .button-success:active {
+  background: #0ca519;
+  border-color: #0ca519;
+  -webkit-box-shadow: inset 0 2px 5px -3px #0ca51980;
+          box-shadow: inset 0 2px 5px -3px #0ca51980;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+.wp-core-ui .button-success[disabled], .wp-core-ui .button-success:disabled, .wp-core-ui .button-success.disabled {
+  color: #70b375 !important;
+  border-color: #34d342 !important;
+  background: #8ed494 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: default;
+  -webkit-transform: none !important;
+          transform: none !important;
+}
+/*# sourceMappingURL=main.css.map */

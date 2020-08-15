@@ -1,79 +1,59 @@
 <?php
 /**
  * Plugin Name: Linearc Loader
- * Plugin URI: http://www.linearc.biz.com/our-works/
+ * Plugin URI: http://www.linearc.biz/our-works/
  * Description: This creates a nice loader for our sites.
- * Version: 1.0
+ * Version: 1.2
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
 
-function l_loader_style_callback() {
-    echo "<style>
-    .loader {
-        position: fixed;
-        z-index: 99;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .loader-wrap{
-     display:flex;
-     justify-content:center;
-     align-items:center;
-    }
-    .loader img {
-        width: 100px;
-    }
-    
-    .loader.hidden {
-        animation: fadeOut 1s;
-        animation-fill-mode: forwards;
-    }
-    
-    @keyframes fadeOut {
-        0% { display:flex;  }
-        99.999% {
-            opacity: 0;
-            visibility: hidden;
-            display:flex;
-         }
-        100% {
-            opacity: 0;
-            visibility: hidden;
-            display:none
-        }
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/loader.php';
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/plugin-surport.php';
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/admin-function.php';
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/enqueue.php';
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/ajax-request-handler.php';
 
-    }
-        </style>";
-}
-add_action( 'wp_head', 'l_loader_style_callback' ,1 );
+function update_adminbar($wp_adminbar) {
+  
+    // add SitePoint menu item
+    $wp_adminbar->add_node([
+      'id' => 'linearc_loader',
+      'title'  => '<span class="ab icon"></span>'.'Site Loader',
+      'href' => esc_url( admin_url( 'options-general.php?page=l_loader_admin_page' ) ),
+      'meta' => false
+    ]);
 
-
-function l_loader_html_callback(){
-    echo '
-        <div class="loader">
-            <script>
-                window.addEventListener("load", function () {
-                    const loader = document.querySelector(".loader");
-                    loader.className += " hidden"; // class "loader hidden"
-                    console.log(loader);
-                });
-            </script>
-            <div class="loader-wrap">
-                <img src="'.plugin_dir_url( __FILE__ ) . 'images/default-loader.gif" alt="Loading..." />
-                <!-- <div class="text">Loading</div> -->
-            </div>
-        </div>
-    ';
-}
-
-add_action( 'wp_body_open', 'l_loader_html_callback' ,1 );
+        // add Forum sub-menu item
+        $wp_adminbar->add_node([
+            'id' => 'linearc_loader_upload',
+            'title' => 'Change Loader',
+            'parent' => 'linearc_loader',
+            'meta' => [
+              'id'=>'change-l-loader-file-admin-bar'
+            ]
+            
+        ]);
+        
+        $status =  esc_attr( get_option( 'l_loader_status' ) );
+        $status =($status=="")?"1":$status;
+        // add Forum sub-menu item
+        $wp_adminbar->add_node([
+          'id' => 'linearc_loader_deactivate',
+          'title' => ($status=="1")?"Deactivate":"Activate",
+          'parent' => 'linearc_loader',
+          'data-l-status'=>($status=="1")?"1":"0",
+          'meta' => [
+            'class'=>($status=="1")?"1":"0",
+            'data-l-status'=>($status=="1")?"1":"0",
+            'data-test' => 'data-test content'
+          ]
+        ]);
+  
+  }
+  
+  // admin_bar_menu hook
+  add_action('admin_bar_menu', 'update_adminbar', 999);
 
 //add_action( $tag:string, $function_to_add:callable, 1, $accepted_args:integer )
 
