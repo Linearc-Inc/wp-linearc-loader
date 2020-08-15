@@ -8,7 +8,7 @@
  * Author URI: http://www.iamafasha.com
  */
 
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/loader.php';
+require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/noprive-function.php';
 require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/plugin-surport.php';
 require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/admin-function.php';
 require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/enqueue.php';

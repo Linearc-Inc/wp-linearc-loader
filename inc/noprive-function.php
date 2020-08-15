@@ -56,7 +56,6 @@ function l_loader_html_callback(){
                 window.addEventListener("load", function () {
                     const loader = document.querySelector(".loader");
                     loader.className += " hidden"; // class "loader hidden"
-                    console.log(loader);
                 });
             </script>
             <div class="loader-wrap">
