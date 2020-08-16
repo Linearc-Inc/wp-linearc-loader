@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Linearc Loader
- * Plugin URI: http://www.linearc.biz/our-works/
- * Description: This creates a nice loader for our sites.
+ * Plugin Name: Site Loader
+ * Plugin URI: https://www.linearc.biz/profile/
+ * Description: This creates a nice loader for your wordpress site.
  * Version: 1.5.11
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
