@@ -8,12 +8,18 @@
  * Author URI: http://www.iamafasha.com
  */
 
-
 // Make sure we don't expose any info if called directly
-// if ( !function_exists( 'add_action' ) ) {
-// 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
-// 	exit;
-// }
+if ( !function_exists( 'add_action' ) ) {
+	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
+	exit;
+}
+
+function l_loader_plugin_dir_path(){
+  return plugin_dir_path(__FILE__);
+}
+function l_loader_plugin_dir_url(){
+  return plugin_dir_url( __FILE__ );
+}
 
 require_once plugin_dir_path( __FILE__ ).'/inc/noprive-function.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/plugin-surport.php';

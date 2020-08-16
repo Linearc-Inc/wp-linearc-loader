@@ -48,7 +48,7 @@ function l_loader_style_callback() {
 }
 function l_loader_html_callback(){
     $loader = esc_attr( get_option( 'l_loader_file' ) );
-    $loader=$loader==""?plugin_dir_url( 'wp-linearc-loader/assets/images',__FILE__).'images/default-loader.gif':$loader;
+    $loader=$loader==""?l_loader_plugin_dir_url().'assets/images/default-loader.gif':$loader;
 
     echo '
         <div class="loader">

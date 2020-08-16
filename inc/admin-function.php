@@ -10,7 +10,7 @@ function sunset_add_admin_page() {
 add_action( 'admin_menu', 'sunset_add_admin_page' );
 
 function l_loader_admin_page_callback(){
-    require_once( plugin_dir_path( __DIR__).'inc/templates/loader-settings.php' );
+    require_once( l_loader_plugin_dir_path().'inc/templates/loader-settings.php' );
 }
 
 //Activate custom settings
@@ -46,9 +46,10 @@ function l_loader_status_calllback($X)
 
 
 function l_loader_file_calllback($X)
-{   $loader_file = esc_attr( get_option( 'l_loader_file' ) );
+{
+    $loader_file = esc_attr( get_option( 'l_loader_file' ) );
 	if(empty($loader_file) ){
-        echo '<img width="100px" height="100px" id="l-loading-file-preview" style="display:block" src="'.plugin_dir_url( 'wp-linearc-loader/assets/images',__FILE__).'/images/default-loader.gif" alt="" />';
+        echo '<img width="100px" height="100px" id="l-loading-file-preview" style="display:block" src="'.l_loader_plugin_dir_url().'assets/images/default-loader.gif" alt="" />';
         echo '<button 
                 type="button"
                 class="icon-button button button-secondary upload-loader-file-button" 
@@ -72,10 +73,10 @@ function l_loader_file_calllback($X)
                     type="button" 
                     class="button icon-button button-secondary" 
                     id="remove-custom-loader"
-                    data-default-loader="'.plugin_dir_url( 'wp-linearc-loader/assets/images',__FILE__).'/images/default-loader.gif"
+                    data-default-loader="'.l_loader_plugin_dir_url().'assets/images/default-loader.gif"
                 >
                     <span 
-                    data-default-loader="'.plugin_dir_url( 'wp-linearc-loader/assets/images',__FILE__).'/images/default-loader.gif"
+                    data-default-loader="'.l_loader_plugin_dir_url().'assets/images/default-loader.gif"
                     class="l-loader-icon dashicons-before dashicons-no"></span>
                     Reset to Default
                 </button>
