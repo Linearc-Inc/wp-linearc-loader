@@ -3,7 +3,7 @@
  * Plugin Name: Linearc Loader
  * Plugin URI: http://www.linearc.biz/our-works/
  * Description: This creates a nice loader for our sites.
- * Version: 1.5.10
+ * Version: 1.5.11
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
