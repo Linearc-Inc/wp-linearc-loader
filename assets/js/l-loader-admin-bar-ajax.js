@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
                 $('#l_loader_file').val(attachment.url);
                 $('#l-loading-file-preview').attr('src',attachment.url);
                 $.ajax({
-                    url: 'http://localhost/linearc/wp-admin/admin-ajax.php',
+                    url: document.location.origin+'/wp-admin/admin-ajax.php',
                     type:"POST",
                     data: {
                       action:'change_l_loader_file_action',
