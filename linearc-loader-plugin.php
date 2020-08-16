@@ -3,42 +3,23 @@
  * Plugin Name: Linearc Loader
  * Plugin URI: http://www.linearc.biz/our-works/
  * Description: This creates a nice loader for our sites.
- * Version: 1.5
+ * Version: 1.5.2
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
 
-
-/*
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
-Copyright 2005-2015 Automattic, Inc.
-*/
 
 // Make sure we don't expose any info if called directly
 if ( !function_exists( 'add_action' ) ) {
 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
 	exit;
 }
-
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/noprive-function.php';
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/plugin-surport.php';
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/admin-function.php';
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/enqueue.php';
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/inc/ajax-request-handler.php';
-require_once plugin_dir_path( __DIR__ ).'linearc-loader/classes/Updater.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/noprive-function.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/plugin-surport.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/admin-function.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/enqueue.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/ajax-request-handler.php';
+require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/classes/Updater.php';
 
 if ( is_admin() ) {
     new Updater( __FILE__, 'Linearc-Inc', "wp-linearc-loader" ,"0345013c4ec53e41c7523332c1c61ef2fc745a41" );
