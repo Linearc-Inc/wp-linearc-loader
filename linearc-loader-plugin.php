@@ -3,7 +3,7 @@
  * Plugin Name: Site Loader
  * Plugin URI: https://www.linearc.biz/profile/
  * Description: This creates a nice loader for your wordpress site.
- * Version: 1.5.16
+ * Version: 1.5.18
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
@@ -70,10 +70,17 @@ function update_adminbar($wp_adminbar) {
         ]);
   
   }
-  
   // admin_bar_menu hook
   add_action('admin_bar_menu', 'update_adminbar', 999);
 
-//add_action( $tag:string, $function_to_add:callable, 1, $accepted_args:integer )
 
-//wp_get_plugin_file_editable_extensions( $plugin:string )
+  function add_plugin_link( $plugin_actions, $plugin_file ) {
+ 
+    $new_actions = array();
+    if ( basename( plugin_dir_path( __FILE__ ) ) . '/linearc-loader-plugin.php' === $plugin_file ) {
+      $new_actions['cl_settings'] = sprintf( __( '<a target="_blank" style="color:green" href="%s">Buy me a cup of coffee</a>', 'https://flutterwave.com/pay/rbyeiijtezwx' ), esc_url('https://flutterwave.com/pay/rbyeiijtezwx') );
+    }
+ 
+    return array_merge( $new_actions, $plugin_actions );
+}
+add_filter( 'plugin_action_links', 'add_plugin_link', 10, 2 );
