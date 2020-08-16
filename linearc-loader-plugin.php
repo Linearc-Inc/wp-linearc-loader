@@ -3,7 +3,7 @@
  * Plugin Name: Site Loader
  * Plugin URI: https://www.linearc.biz/profile/
  * Description: This creates a nice loader for your wordpress site.
- * Version: 1.5.11
+ * Version: 1.5.16
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
