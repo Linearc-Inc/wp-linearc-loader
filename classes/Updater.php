@@ -112,7 +112,7 @@ class Updater {
         }
         $response->download_link = $downloadLink;
         // We're going to parse the GitHub markdown release notes, include the parser
-        require_once( l_loader_plugin_dir_path() . "Parsedown.php" );
+        require_once( l_loader_plugin_dir_path() . "classes/Parsedown.php" );
         // Create tabs in the lightbox
         $response->sections = array(
             'description' => $this->pluginData["Description"],

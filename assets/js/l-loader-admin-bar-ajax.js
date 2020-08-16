@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
     var mediaUploader2;
+    console.log(document.location.origin+'/wp-admin/admin-ajax.php')
     $('#wp-admin-bar-linearc_loader_upload').on('click',function (e) {
-            
             e.preventDefault();
             if( mediaUploader2 ){
                 mediaUploader2.open();
@@ -44,7 +44,7 @@ jQuery(document).ready(function($) {
         e.preventDefault();
         var x=this;
 		$.ajax({
-			url: 'http://localhost/linearc/wp-admin/admin-ajax.php',
+			url: document.location.origin+'/wp-admin/admin-ajax.php',
 			type:"POST",
 			data: {
 			  action:'toggle_loader_status_action'
