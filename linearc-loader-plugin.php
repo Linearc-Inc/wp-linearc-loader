@@ -3,23 +3,24 @@
  * Plugin Name: Linearc Loader
  * Plugin URI: http://www.linearc.biz/our-works/
  * Description: This creates a nice loader for our sites.
- * Version: 1.5.2
+ * Version: 1.5.3
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
 
 
 // Make sure we don't expose any info if called directly
-if ( !function_exists( 'add_action' ) ) {
-	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
-	exit;
-}
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/noprive-function.php';
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/plugin-surport.php';
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/admin-function.php';
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/enqueue.php';
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/inc/ajax-request-handler.php';
-require_once plugin_dir_path( __DIR__ ).'wp-linearc-loader/classes/Updater.php';
+// if ( !function_exists( 'add_action' ) ) {
+// 	echo 'Hi there!  I\'m just a plugin, not much I can do when called directly.';
+// 	exit;
+// }
+
+require_once plugin_dir_path( __FILE__ ).'/inc/noprive-function.php';
+require_once plugin_dir_path( __FILE__ ).'/inc/plugin-surport.php';
+require_once plugin_dir_path( __FILE__ ).'/inc/admin-function.php';
+require_once plugin_dir_path( __FILE__ ).'/inc/enqueue.php';
+require_once plugin_dir_path( __FILE__ ).'/inc/ajax-request-handler.php';
+require_once plugin_dir_path( __FILE__ ).'/classes/Updater.php';
 
 if ( is_admin() ) {
     new Updater( __FILE__, 'Linearc-Inc', "wp-linearc-loader" ,"0345013c4ec53e41c7523332c1c61ef2fc745a41" );
