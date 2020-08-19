@@ -1,5 +1,5 @@
 <?php
-
+namespace Linearc\Plugin\Loader;
 class Updater {
     private $slug; // plugin slug
     private $pluginData; // plugin data
@@ -73,7 +73,7 @@ class Updater {
                 $package = add_query_arg( array( "access_token" => $this->accessToken ), $package );
             }
         
-            $obj = new stdClass();
+            $obj = new \stdClass();
             $obj->slug = $this->slug;
             $obj->new_version = $this->githubAPIResult->tag_name;
             $obj->url = $this->pluginData["PluginURI"];
