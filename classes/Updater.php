@@ -117,7 +117,7 @@ class Updater {
         $response->sections = array(
             'description' => $this->pluginData["Description"],
             'changelog' => class_exists( "Parsedown" )
-                ? Parsedown::instance()->parse( $this->githubAPIResult->body )
+                ? \Parsedown::instance()->parse( $this->githubAPIResult->body )
                 : $this->githubAPIResult->body
         );
 
