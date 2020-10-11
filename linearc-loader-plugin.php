@@ -3,7 +3,7 @@
  * Plugin Name: Site Loader
  * Plugin URI: https://www.linearc.biz/profile/
  * Description: This creates a nice loader for your wordpress site.
- * Version: 1.5.20
+ * Version: 1.5.21
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  * GitHub Plugin URI: https://github.com/Linearc-Inc/wp-linearc-loader
@@ -30,7 +30,7 @@ require_once plugin_dir_path( __FILE__ ).'/inc/ajax-request-handler.php';
 require_once plugin_dir_path( __FILE__ ).'/classes/Updater.php';
 
 if ( is_admin() ) {
-    new Linearc\Plugin\Loader\Updater( __FILE__, 'Linearc-Inc', "wp-linearc-loader" ,"0345013c4ec53e41c7523332c1c61ef2fc745a41" );
+    new Linearc\Plugin\Loader\Updater( __FILE__, 'Linearc-Inc', "wp-linearc-loader");
 }
 
 
