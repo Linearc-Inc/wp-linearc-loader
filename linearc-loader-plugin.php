@@ -3,9 +3,10 @@
  * Plugin Name: Site Loader
  * Plugin URI: https://www.linearc.biz/profile/
  * Description: This creates a nice loader for your wordpress site.
- * Version: 1.5.19
+ * Version: 1.5.20
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
+ * GitHub Plugin URI: https://github.com/Linearc-Inc/wp-linearc-loader
  */
 
 // Make sure we don't expose any info if called directly
