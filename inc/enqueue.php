@@ -1,14 +1,14 @@
 <?php
 
 function add_script_to_menu_page($hook){
-
-
-  if($hook=='settings_page_l_loader_admin_page'){
       //Enqueue jquery  if it's not
-      if ( ! wp_script_is( 'jquery', 'enqueued' )) {
-        wp_enqueue_script( 'jquery', plugins_url( 'https://code.jquery.com/jquery-3.5.1.min.js' , __FILE__ ), array('jquery'), '1.0.0', true );
+      if (!wp_script_is( 'jquery', 'enqueued' )) {
+        wp_deregister_script('jquery');
+        wp_deregister_script('jquery');
+        wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-3.5.1.min.js', array('jquery'), '3.5.1', false );
       }
-      
+
+    if($hook=='settings_page_l_loader_admin_page'){
       //Register top admin bar css and js
           wp_register_style( 'l-loader-admin-css', plugins_url( '../assets/css/main.css' , __FILE__ ), false, '1.0.0' );
           wp_enqueue_style( 'l-loader-admin-css');

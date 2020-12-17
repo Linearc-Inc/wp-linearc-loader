@@ -29,7 +29,7 @@ jQuery(document).ready( function($){
 	});
 
 	$('#remove-custom-loader').on('click',function(e){
-		$('#l_loader_file').val('');
+		$('#l_loader_file').val($(e.target).data('default-loader'));
 		$('#l-loading-file-preview').attr('src',$(e.target).data('default-loader'));
 	})
 	

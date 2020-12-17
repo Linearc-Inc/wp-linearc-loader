@@ -3,6 +3,8 @@
 function l_loader_style_callback() {
     $loader_page_background =  esc_attr( get_option( 'l_loader_bg_color' ) );
     $loader_page_background=$loader_page_background==""?"#fff":$loader_page_background;
+    $l_loader_width = esc_attr( get_option( 'l_loader_width','100px'));
+    $l_loader_height = esc_attr( get_option( 'l_loader_height', '100px'));
 
     $custom_css = esc_attr( get_option( 'l_loader_custom_CSS', '#preloader{
         /*Loader container CSS */
@@ -63,22 +65,33 @@ function l_loader_style_callback() {
         </style>";
 }
 function l_loader_html_callback(){
-    $loader = esc_attr( get_option( 'l_loader_file' ) );
-    $loader=$loader==""?l_loader_plugin_dir_url().'assets/images/default-loader.gif':$loader;
+    $loader = esc_attr( get_option( 'l_loader_file', l_loader_plugin_dir_url().'assets/images/default-loader.gif' ) );
+    $loader_type = esc_attr( get_option( 'l_loader_type' ), "image");
 
-    echo '
-        <div class="loader">
-            <script>
-                window.addEventListener("load", function () {
-                    const loader = document.querySelector(".loader");
-                    loader.className += " hidden"; // class "loader hidden"
-                });
-            </script>
+    echo '<div id="preloader" class="loader">
             <div class="loader-wrap">
-                <img src="'.$loader.'" alt="Loading..." />
-                <!-- <div class="text">Loading</div> -->
+            ';
+
+    if($loader_type=="image"){
+        echo '<img src="'.$loader.'" alt="Loading..." />';
+    }else if ($loader_type=="video") {
+        echo '<video src="'.$loader.'" autoplay" /></video>';
+    }else if ($loader_type=="html"){
+        $loader =get_option( 'l_loader_file');
+        echo $loader;
+    }
+    echo '
             </div>
-        </div>
+         </div>
+        <script>
+        window.addEventListener("load", function () {
+            if (jQuery("#preloader").length) {
+                jQuery("#preloader").delay(100).fadeOut("slow", function() {
+                    jQuery(this).remove();
+                });
+                }
+            });
+    </script>
     ';
 }
 function start_of_website()

@@ -27,7 +27,6 @@ require_once plugin_dir_path( __FILE__ ).'/inc/plugin-surport.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/admin-function.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/enqueue.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/ajax-request-handler.php';
-require_once plugin_dir_path( __FILE__ ).'/classes/Updater.php';
 
 
 function update_adminbar($wp_adminbar) {
