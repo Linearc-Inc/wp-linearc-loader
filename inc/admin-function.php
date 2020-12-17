@@ -21,11 +21,14 @@ function sunset_custom_settings() {
 	register_setting( 'l-loader-group', 'l_loader_bg_color' );
     register_setting( 'l-loader-group', 'l_loader_status' );
     register_setting( 'l-loader-group', 'l_loader_custom_CSS' );
+    register_setting( 'l-loader-group', 'l_loader_width' );
+    register_setting( 'l-loader-group', 'l_loader_height' );
 
     add_settings_section( 'l-loader-options', 'Page Loader Option', 'l_page_loader_options', 'l_loader_admin_page');
     
 
     add_settings_field( 'l-loader-file', 'Loader File', 'l_loader_file_calllback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-size', 'Loader Size', 'l_loader_size_calllback', 'l_loader_admin_page', 'l-loader-options');
 	add_settings_field( 'l-loader-bg_color', 'Background-color', 'l_loader_bg_color_calllback', 'l_loader_admin_page', 'l-loader-options');
 	add_settings_field( 'l-loader-status', 'Loader Status', 'l_loader_status_calllback', 'l_loader_admin_page', 'l-loader-options');
 	add_settings_field( 'l-loader-custom-css', 'Loader Status', 'l_loader_custom_CSS_calllback', 'l_loader_admin_page', 'l-loader-options');
@@ -84,10 +87,15 @@ function l_loader_file_calllback($X)
                 </button>
             </div>';
     }
-    echo '<input type="hidden" id="l_loader_file" name="l_loader_file" value="'.$loader_file.'" />';
 
+function l_loader_size_calllback($x)
+{
+    $l_loader_width = esc_attr( get_option( 'l_loader_width'));
+    $l_loader_height = esc_attr( get_option( 'l_loader_height'));
+
+    echo '<input placeholder="width eg.300px" name="l_loader_width" value="'.$l_loader_width.'" id="l_loader_width" type="text" />';
+    echo '<input placeholder="height eg.300px" name="l_loader_height" value="'.$l_loader_height.'"  id="l_loader_height" type="text" />';
 }
-
 function l_loader_bg_color_calllback($X)
 {   
     $bg_color = esc_attr( get_option( 'l_loader_bg_color' ) );

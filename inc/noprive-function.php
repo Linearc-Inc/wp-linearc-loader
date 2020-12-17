@@ -19,6 +19,7 @@ function l_loader_style_callback() {
     .loader {
         background-color:".$loader_page_background.";
         position: fixed;
+        overflow:hidden;
         z-index: 99;
         top: 0;
         left: 0;
@@ -32,9 +33,12 @@ function l_loader_style_callback() {
      display:flex;
      justify-content:center;
      align-items:center;
+     width:".$l_loader_width.";
+     height:".$l_loader_height.";
     }
     .loader img {
-        width: 100px;
+        width: 100%;
+        height:100%;
     }
     
     .loader.hidden {
