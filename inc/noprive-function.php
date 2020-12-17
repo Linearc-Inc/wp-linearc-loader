@@ -3,7 +3,19 @@
 function l_loader_style_callback() {
     $loader_page_background =  esc_attr( get_option( 'l_loader_bg_color' ) );
     $loader_page_background=$loader_page_background==""?"#fff":$loader_page_background;
+
+    $custom_css = esc_attr( get_option( 'l_loader_custom_CSS', '#preloader{
+        /*Loader container CSS */
+        }
+        
+        #preloader>.loader-wrap{
+        /*Loader CSS*/
+        }' ));
+
     echo "<style>
+
+    ".$custom_css."
+
     .loader {
         background-color:".$loader_page_background.";
         position: fixed;

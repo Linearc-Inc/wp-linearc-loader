@@ -20,6 +20,7 @@ function sunset_custom_settings() {
     register_setting( 'l-loader-group', 'l_loader_file' );
 	register_setting( 'l-loader-group', 'l_loader_bg_color' );
     register_setting( 'l-loader-group', 'l_loader_status' );
+    register_setting( 'l-loader-group', 'l_loader_custom_CSS' );
 
     add_settings_section( 'l-loader-options', 'Page Loader Option', 'l_page_loader_options', 'l_loader_admin_page');
     
@@ -27,6 +28,7 @@ function sunset_custom_settings() {
     add_settings_field( 'l-loader-file', 'Loader File', 'l_loader_file_calllback', 'l_loader_admin_page', 'l-loader-options');
 	add_settings_field( 'l-loader-bg_color', 'Background-color', 'l_loader_bg_color_calllback', 'l_loader_admin_page', 'l-loader-options');
 	add_settings_field( 'l-loader-status', 'Loader Status', 'l_loader_status_calllback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-custom-css', 'Loader Status', 'l_loader_custom_CSS_calllback', 'l_loader_admin_page', 'l-loader-options');
 }
 
 function l_page_loader_options($X)
@@ -93,3 +95,18 @@ function l_loader_bg_color_calllback($X)
     echo '<input class="my-color-field" type="text" value="'.$value.'" name="l_loader_bg_color" data-default-color="#fff" />';
     # code...
 }
+function l_loader_custom_CSS_calllback()
+{
+    $value = esc_attr( get_option( 'l_loader_custom_CSS', '#preloader{
+        /*Loader container CSS */
+        }
+        
+        #preloader>.loader-wrap{
+        /*Loader CSS*/
+        }' ));
+
+    echo '
+    <textarea style="min-width:50%" rows="5" name="l_loader_custom_CSS" id="l_loader_custom_CSS" >'.$value.'</textarea>';
+}
+
+
