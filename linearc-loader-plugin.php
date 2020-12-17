@@ -4,7 +4,7 @@
  * Plugin URI: https://www.linearc.biz/profile/
  * GitHub Plugin URI: https://github.com/Linearc-Inc/wp-linearc-loader/
  * Description: This creates a nice loader for your wordpress site.
- * Version: 1.5.21
+ * Version: 1.5.25
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
  */
