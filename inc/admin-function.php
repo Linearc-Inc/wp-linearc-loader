@@ -24,15 +24,17 @@ function sunset_custom_settings() {
     register_setting( 'l-loader-group', 'l_loader_custom_CSS' );
     register_setting( 'l-loader-group', 'l_loader_width' );
     register_setting( 'l-loader-group', 'l_loader_height' );
+    register_setting( 'l-loader-group', 'l_loader_z_index' );
 
     add_settings_section( 'l-loader-options', 'Page Loader Option', 'l_page_loader_options', 'l_loader_admin_page');
     
     add_settings_field( 'l-loader-type', 'Loader Type', 'l_loader_type_call_back', 'l_loader_admin_page', 'l-loader-options');
-    add_settings_field( 'l-loader-file', 'Loader File', 'l_loader_file_calllback', 'l_loader_admin_page', 'l-loader-options');
-	add_settings_field( 'l-loader-size', 'Loader Size', 'l_loader_size_calllback', 'l_loader_admin_page', 'l-loader-options');
-	add_settings_field( 'l-loader-bg_color', 'Background-color', 'l_loader_bg_color_calllback', 'l_loader_admin_page', 'l-loader-options');
-	add_settings_field( 'l-loader-status', 'Loader Status', 'l_loader_status_calllback', 'l_loader_admin_page', 'l-loader-options');
-	add_settings_field( 'l-loader-custom-css', 'Loader Status', 'l_loader_custom_CSS_calllback', 'l_loader_admin_page', 'l-loader-options');
+    add_settings_field( 'l-loader-file', 'Loader File', 'l_loader_file_callback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-z-index', 'Z-Index', 'l_loader_z_index_callback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-size', 'Loader Size', 'l_loader_size_callback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-bg_color', 'Background-color', 'l_loader_bg_color_callback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-status', 'Loader Status', 'l_loader_status_callback', 'l_loader_admin_page', 'l-loader-options');
+	add_settings_field( 'l-loader-custom-css', 'Loader Status', 'l_loader_custom_CSS_callback', 'l_loader_admin_page', 'l-loader-options');
 }
 
 function l_page_loader_options($X)
@@ -70,7 +72,7 @@ function l_loader_type_call_back()
             <option ". ( ($loader_type == "video") ? 'selected' : '') ." value='video' > File </option>
          </select>";
 }
-function l_loader_status_calllback($X)
+function l_loader_status_callback($X)
 {  
     $loader_status = esc_attr( get_option( 'l_loader_status' ) );
     if($loader_status==0){
@@ -79,7 +81,7 @@ function l_loader_status_calllback($X)
     }
     echo '<button data-ajax-url="'.admin_url( 'admin-ajax.php').'" type="button" id="l-toggle-loader-status" class="button button-danger" value="0" >Deactivate</button>';
 }
-function l_loader_file_calllback($X)
+function l_loader_file_callback($X)
 {
     $loader_file = esc_attr( get_option( 'l_loader_file' ) , l_loader_plugin_dir_url().'assets/images/default-loader.gif' );
     $loader_type = esc_attr( get_option( 'l_loader_type' ), "file");
@@ -109,7 +111,14 @@ function l_loader_file_calllback($X)
 
 }
 
-function l_loader_size_calllback($x)
+function l_loader_z_index_callback()
+{
+    $l_loader_z_index = esc_attr( get_option( 'l_loader_z_index', 99));
+
+    echo '<input required  name="l_loader_z_index" value="'.$l_loader_z_index.'" id="l_loader_z_index" type="number" />';
+}
+
+function l_loader_size_callback($x)
 {
     $l_loader_width = esc_attr( get_option( 'l_loader_width'));
     $l_loader_height = esc_attr( get_option( 'l_loader_height'));
@@ -117,12 +126,12 @@ function l_loader_size_calllback($x)
     echo '<input placeholder="width eg.300px" name="l_loader_width" value="'.$l_loader_width.'" id="l_loader_width" type="text" />';
     echo '<input placeholder="height eg.300px" name="l_loader_height" value="'.$l_loader_height.'"  id="l_loader_height" type="text" />';
 }
-function l_loader_bg_color_calllback($X)
+function l_loader_bg_color_callback($X)
 {   
     $value = esc_attr( get_option( 'l_loader_bg_color' , "#fff" ));
     echo '<input class="my-color-field" type="text" value="'.$value.'" name="l_loader_bg_color" data-default-color="#fff" />';
 }
-function l_loader_custom_CSS_calllback()
+function l_loader_custom_CSS_callback()
 {
     $value = esc_attr( get_option( 'l_loader_custom_CSS', '#preloader{
         /*Loader container CSS */

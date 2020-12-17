@@ -5,6 +5,7 @@ function l_loader_style_callback() {
     $loader_page_background=$loader_page_background==""?"#fff":$loader_page_background;
     $l_loader_width = esc_attr( get_option( 'l_loader_width','100px'));
     $l_loader_height = esc_attr( get_option( 'l_loader_height', '100px'));
+    $l_loader_z_index = esc_attr( get_option( 'l_loader_z_index', 99));
 
     $custom_css = esc_attr( get_option( 'l_loader_custom_CSS', '#preloader{
         /*Loader container CSS */
@@ -22,7 +23,7 @@ function l_loader_style_callback() {
         background-color:".$loader_page_background.";
         position: fixed;
         overflow:hidden;
-        z-index: 99;
+        z-index:".$l_loader_z_index.";
         top: 0;
         left: 0;
         width: 100%;
