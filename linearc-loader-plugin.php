@@ -2,11 +2,11 @@
 /**
  * Plugin Name: Site Loader
  * Plugin URI: https://www.linearc.biz/profile/
+ * GitHub Plugin URI: https://github.com/Linearc-Inc/wp-linearc-loader/
  * Description: This creates a nice loader for your wordpress site.
  * Version: 1.5.21
  * Author: Isakiye Afasha
  * Author URI: http://www.iamafasha.com
- * GitHub Plugin URI: https://github.com/Linearc-Inc/wp-linearc-loader
  */
 
 // Make sure we don't expose any info if called directly
@@ -27,11 +27,6 @@ require_once plugin_dir_path( __FILE__ ).'/inc/plugin-surport.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/admin-function.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/enqueue.php';
 require_once plugin_dir_path( __FILE__ ).'/inc/ajax-request-handler.php';
-require_once plugin_dir_path( __FILE__ ).'/classes/Updater.php';
-
-if ( is_admin() ) {
-    new Linearc\Plugin\Loader\Updater( __FILE__, 'Linearc-Inc', "wp-linearc-loader");
-}
 
 
 function update_adminbar($wp_adminbar) {
